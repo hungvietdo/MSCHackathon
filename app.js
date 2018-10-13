@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://hungdo:hungdo@cluster0-zoamm.mongodb.net/test');
+mongoose.connect('mongodb://ec2-35-172-116-94.compute-1.amazonaws.com/test');
 
 var bears = require('./models/bear');
 var searchresult = require('./models/searchResult');

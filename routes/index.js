@@ -8,7 +8,7 @@ db.once('open', function() {
   /* GET home page. */
   router.get('/', function(req, res, next) {
     res.render('index', { 
-      title: 'Truck Online - Home',
+      title: 'Moving Packaging - Home',
       page: 'Home'
         });
   });
