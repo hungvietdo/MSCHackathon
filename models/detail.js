@@ -5,10 +5,11 @@ var db = mongoose.connection;
 var _ = require('underscore');
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-console.log("we are connected to mongo");
 var TruckSchema = mongoose.Schema({
     name: String
 });
+
+console.log("we are connected to mongo");
 
   router.get('/detail', function(req, res, next) {
     if (req.query.id == "") { 
@@ -19,14 +20,14 @@ var TruckSchema = mongoose.Schema({
       });
     } else {
       console.log('in detail');
-      var detailvehicle = mongoose.model('detailvehicle', TruckSchema, 'vehicles');
+      //var detailvehicle = mongoose.model('detailvehicle', TruckSchema, 'vehicles');
       detailvehicle.find({"AD_ID":req.query.id}).exec(function(err, searchresults) {
         var str = JSON.stringify(searchresults);
         var result = JSON.parse(str);
         
         res.render('vehicledetail', { 
           title: 'Truck Online - Result',
-          data: mappingData(result[0]),
+          data: [],
           checkinput: true
         });
 

@@ -11,9 +11,10 @@ var bears = require('./models/bear');
 var searchresult = require('./models/searchResult');
 var homepage = require('./routes/index');
 var detail = require('./models/detail');
+var create = require('./models/create');
+var search = require('./models/search');
 var sendlead = require('./models/sendlead');
 var leadsinfo = require('./models/leadsinfo');
-
 
 var app = express();
 
@@ -33,9 +34,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //to define data
 //app.locals.appdata = require('./data.json');
 app.use('/', searchresult);
-app.use('/', bears);
 app.use('/', homepage);
 app.use('/', detail);
+app.use('/', create);
+app.use('/', search);
 app.use('/', sendlead);
 app.use('/', leadsinfo);
 
@@ -45,8 +47,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-// error handlers
 
 // development error handler
 // will print stacktrace
