@@ -34,14 +34,6 @@ db.once('open', function() {
             }
         ); 
 
-        // // Create an instance of model SomeModel
-        // var awesome_instance = new SomeModel({ name: 'awesome' });
-
-        // // Save the new model instance, passing a callback
-        // awesome_instance.save(function (err) {
-        // if (err) return handleError(err);
-        // // saved!
-        // });
 
         db.collection("leads").insertOne(newlead, function(err, res) {
             if (err) throw err;
