@@ -71,6 +71,24 @@ $( document ).ready(function() {
       }});
   };
 
+  function sendLeadInfo(data) {
+    var urlParams = getUrlQueryParams();
+    $.ajax({
+      url: "/createProject", 
+      data: {
+        "familyNumber": data['familyNumber'],
+        "moverNumber": data['moverNumber']
+      },
+      success: function(result){
+        setTimeout(function() {
+          location.reload();
+          $this.button('reset');
+          $('#exampleModal').modal('hide');
+          $("#sendMessageLabel").text("Your project has been created.");
+        }, 2000);  
+      }});
+  };
+
   $('#leadSubmit').on('click', function() {
     $("#MissingLeadData").text("");
     var $this = $(this);
@@ -93,6 +111,25 @@ $( document ).ready(function() {
       
     }
   });
+
+  $('#createProject').on('click', function() {
+    alert('create');
+    var $this = $(this);
+    data = [];
+    data['familyNumber'] = $("#familyNumber").val();
+    data['moverNumber'] = $("#moverNumber").val();
+
+    if (
+      data['familyNumber'] == '' ||
+      data['moverNumber'] == ''
+   ) {
+     $("#MissingLeadData").text("All fields are required.");
+   } else {      
+      sendLeadInfo(data);
+      $this.button('loading');
+    }
+  });
+
 
   var urlParams = getUrlQueryParams();
 
