@@ -8,3 +8,8 @@
 Repair mongo: https://www.howtoforge.com/tutorial/install-mongodb-on-ubuntu-14.04/
 
 # MSCHackathon
+
+Project Members:
+Hung Do
+Hannah Do
+Stephanie Blake
