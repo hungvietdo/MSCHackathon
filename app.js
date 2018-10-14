@@ -7,14 +7,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://ec2-35-172-116-94.compute-1.amazonaws.com/test');
 
-var bears = require('./models/bear');
-var searchresult = require('./models/searchResult');
 var homepage = require('./routes/index');
-var detail = require('./models/detail');
 var create = require('./models/create');
 var search = require('./models/search');
-var sendlead = require('./models/sendlead');
-var leadsinfo = require('./models/leadsinfo');
 
 var app = express();
 
@@ -22,24 +17,15 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-//to define data
-//app.locals.appdata = require('./data.json');
-app.use('/', searchresult);
 app.use('/', homepage);
-app.use('/', detail);
 app.use('/', create);
 app.use('/', search);
-app.use('/', sendlead);
-app.use('/', leadsinfo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
